@@ -5,6 +5,8 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import '../Css/Login.css'; 
 
+import {Button} from 'react-bootstrap';
+
 function Login(props) {
     const baseUrl= "https://localhost:44385/api/usuarios";
     const cookies= new Cookies();
@@ -38,7 +40,7 @@ function Login(props) {
                 cookies.set('username', respuesta.username, {path: '/'});   
                 cookies.set('password', respuesta.password, {path: '/'});   
 
-                alert("Sesión iniciada por " + respuesta.nombre + " " + respuesta.apellido);
+                // alert("Sesión iniciada por " + respuesta.nombre + " " + respuesta.apellido);
 
                 props.history.push('/menu');
             } else {
@@ -77,7 +79,8 @@ function Login(props) {
                     onChange={handleChange}
                     />
                     <br />
-                    <button className="btn btn-primary" onClick={()=>iniciarSesion()}>Iniciar Sesión</button>
+                    <Button variant="outline-primary" onClick={() => iniciarSesion()}>Iniciar Sesión</Button>
+                    {/* <button className="btn btn-primary" onClick={()=>iniciarSesion()}>Iniciar Sesión</button> */}
                     {/* <button className="btn btn-primary">Iniciar Sesión</button> */}
                 </div>
             </div>
