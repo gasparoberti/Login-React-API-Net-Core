@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Cookies from 'universal-cookie';
 
 function Menu(props) {
@@ -15,6 +15,12 @@ function Menu(props) {
         
         props.history.push('/');
     }
+
+    useEffect(() => {
+        if(!cookies.get('id')) {
+            props.history.push('/');
+        }
+    }, []);
 
     return (
         <div className="container">
