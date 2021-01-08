@@ -30,7 +30,17 @@ function Login(props) {
         }).then(response => {
             if(response.length > 0) {
                 var respuesta = response[0];
-                console.log(respuesta);
+                // console.log(respuesta);
+                cookies.set('id', respuesta.id, {path: '/'});   
+                cookies.set('apellido', respuesta.apellido, {path: '/'});   
+                cookies.set('nombre', respuesta.nombre, {path: '/'});   
+                cookies.set('correo', respuesta.correo, {path: '/'});   
+                cookies.set('username', respuesta.username, {path: '/'});   
+                cookies.set('password', respuesta.password, {path: '/'});   
+
+                alert("Sesión iniciada por " + respuesta.nombre + " " + respuesta.apellido);
+
+                props.history.push('/menu');
             } else {
                 alert("El usuario o la contraseña no son correctos.");
             }
